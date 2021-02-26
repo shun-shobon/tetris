@@ -1,5 +1,5 @@
-export const hello = (name: string): string => {
-  return `Hello, ${name}!`;
-};
+import { render } from "react-dom";
 
-console.log(hello("world"));
+import App from "./App";
+
+render(<App />, document.getElementById("root"));
