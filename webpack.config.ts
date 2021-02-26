@@ -1,6 +1,9 @@
 import type { Configuration } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import sass from "sass";
+import fibers from "fibers";
 import { resolve } from "path";
 
 const isProduction = process.env["NODE_ENV"] === "production";
@@ -36,6 +39,36 @@ const config: Configuration = {
           },
         ],
       },
+      {
+        test: /\.(?:c|sa|sc)ss$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: !isProduction,
+              importLoaders: 1,
+              modules: {
+                auto: true,
+                localIdentName: isProduction
+                  ? "[hash:base64:8]"
+                  : "[path][name]__[local]",
+                exportLocalsConvention: "dashesOnly",
+              },
+            },
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: !isProduction,
+              implementation: sass,
+              sassOptions: {
+                fiber: fibers,
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -52,6 +85,9 @@ const config: Configuration = {
         },
       ],
     }) as any,
+    new MiniCssExtractPlugin({
+      filename: "assets/styles/[name].[contenthash:8].css",
+    }),
   ],
   devtool: isProduction ? "nosources-source-map" : "eval-source-map",
   cache: {
