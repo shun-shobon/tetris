@@ -12,7 +12,13 @@
     "node": ">= 14.16.0 < 15.0.0"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack build"
+    "build": "cross-env NODE_ENV=production webpack build",
+    "lint": "eslint --fix --ignore-path .gitignore \"**/*.{ts,tsx}\"",
+    "lint:check": "eslint --ignore-path .gitignore \"**/*.{ts,tsx}\"",
+    "format": "prettier --write --ignore-path .gitignore \"**/*.{js,ts,tsx}\"",
+    "format:check": "prettier --check --ignore-path .gitignore \"**/*.{js,ts,tsx}\"",
+    "fix": "run-s lint format",
+    "check": "run-p *:check"
   },
   "dependencies": {
     "core-js": "^3.9.0",
@@ -27,10 +33,17 @@
     "@types/node": "^14.14.31",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^7.0.0",
     "cross-env": "^7.0.3",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-react": "^7.22.0",
     "html-webpack-plugin": "^5.2.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
     "ts-loader": "^8.0.17",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.2",
