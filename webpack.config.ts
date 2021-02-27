@@ -47,7 +47,7 @@ const config: Configuration = {
             loader: "css-loader",
             options: {
               sourceMap: !isProduction,
-              importLoaders: 1,
+              importLoaders: 2,
               modules: {
                 auto: true,
                 localIdentName: isProduction
@@ -55,6 +55,12 @@ const config: Configuration = {
                   : "[path][name]__[local]",
                 exportLocalsConvention: "dashesOnly",
               },
+            },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              sourceMap: !isProduction,
             },
           },
           {
