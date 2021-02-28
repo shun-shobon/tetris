@@ -1,0 +1,50 @@
+name: ci
+on:
+  push:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - uses: pnpm/action-setup@v1.2.1
+        with:
+          version: 5.18.1
+      - uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-
+      - run: pnpm install
+
+      - name: Run check
+        run: pnpm check
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - uses: pnpm/action-setup@v1.2.1
+        with:
+          version: 5.18.1
+      - uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-
+      - run: pnpm install
+
+      - name: Run build
+        run: pnpm build
+
+      - name: Upload dist
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
