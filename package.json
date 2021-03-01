@@ -13,6 +13,7 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack build",
+    "clean": "rimraf dist",
     "dev": "webpack serve",
     "lint": "eslint --fix --ignore-path .gitignore \"**/*.{ts,tsx}\"",
     "lint:check": "eslint --ignore-path .gitignore \"**/*.{ts,tsx}\"",
@@ -56,6 +57,7 @@
     "postcss": "^8.2.6",
     "postcss-loader": "^5.0.0",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "ts-loader": "^8.0.17",
