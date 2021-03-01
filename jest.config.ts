@@ -15,6 +15,7 @@ const config: Config.InitialOptions = {
     },
   },
   collectCoverageFrom: ["<rootDir>/src/**/*.{ts,tsx}"],
+  coveragePathIgnorePatterns: ["node_modules", "^.+\\.d\\.ts$"],
 };
 
 export default config;
