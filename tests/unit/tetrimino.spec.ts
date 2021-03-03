@@ -90,7 +90,86 @@ describe("Tetrimino", () => {
       [false, false, false],
     ]);
   });
-  it.todo("Can get rotated state");
+  it("Can get rotated state", () => {
+    const iMino: Tetrimino = new IMino();
+    const jMino: Tetrimino = new JMino();
+    const lMino: Tetrimino = new LMino();
+    const oMino: Tetrimino = new OMino();
+    const sMino: Tetrimino = new SMino();
+    const tMino: Tetrimino = new TMino();
+    const zMino: Tetrimino = new ZMino();
+
+    const iState = iMino.getState("right");
+    const jState = jMino.getState("left");
+    const lState = lMino.getState("right");
+    const oState = oMino.getState("left");
+    const sState = sMino.getState("right");
+    const tState = tMino.getState("left");
+    const zState = zMino.getState("right");
+
+    // ░░░░██░░
+    // ░░░░██░░
+    // ░░░░██░░
+    // ░░░░██░░
+    expect(iState).toEqual([
+      [false, false, true, false],
+      [false, false, true, false],
+      [false, false, true, false],
+      [false, false, true, false],
+    ]);
+
+    // ░░██░░
+    // ░░██░░
+    // ████░░
+    expect(jState).toEqual([
+      [false, true, false],
+      [false, true, false],
+      [true, true, false],
+    ]);
+
+    // ░░██░░
+    // ░░██░░
+    // ░░████
+    expect(lState).toEqual([
+      [false, true, false],
+      [false, true, false],
+      [false, true, true],
+    ]);
+
+    // ████
+    // ████
+    expect(oState).toEqual([
+      [true, true],
+      [true, true],
+    ]);
+
+    // ░░██░░
+    // ░░████
+    // ░░░░██
+    expect(sState).toEqual([
+      [false, true, false],
+      [false, true, true],
+      [false, false, true],
+    ]);
+
+    // ░░██░░
+    // ████░░
+    // ░░██░░
+    expect(tState).toEqual([
+      [false, true, false],
+      [true, true, false],
+      [false, true, false],
+    ]);
+
+    // ░░░░██
+    // ░░████
+    // ░░██░░
+    expect(zState).toEqual([
+      [false, false, true],
+      [false, true, true],
+      [false, true, false],
+    ]);
+  });
   it.todo("Can rotate state");
 });
 
