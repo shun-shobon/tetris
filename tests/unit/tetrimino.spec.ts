@@ -204,5 +204,3 @@ describe("Tetrimino", () => {
     expect(zState).toEqual(zRotatedState);
   });
 });
-
-export {};
