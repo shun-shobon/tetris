@@ -170,7 +170,39 @@ describe("Tetrimino", () => {
       [false, true, false],
     ]);
   });
-  it.todo("Can rotate state");
+  it("Can rotate state", () => {
+    const iMino: Tetrimino = new IMino();
+    const jMino: Tetrimino = new JMino();
+    const lMino: Tetrimino = new LMino();
+    const oMino: Tetrimino = new OMino();
+    const sMino: Tetrimino = new SMino();
+    const tMino: Tetrimino = new TMino();
+    const zMino: Tetrimino = new ZMino();
+
+    const iState = iMino.getState("right");
+    const jState = jMino.getState("left");
+    const lState = lMino.getState("right");
+    const oState = oMino.getState("left");
+    const sState = sMino.getState("right");
+    const tState = tMino.getState("left");
+    const zState = zMino.getState("right");
+
+    const iRotatedState = iMino.rotate("right");
+    const jRotatedState = jMino.rotate("left");
+    const lRotatedState = lMino.rotate("right");
+    const oRotatedState = oMino.rotate("left");
+    const sRotatedState = sMino.rotate("right");
+    const tRotatedState = tMino.rotate("left");
+    const zRotatedState = zMino.rotate("right");
+
+    expect(iState).toEqual(iRotatedState);
+    expect(jState).toEqual(jRotatedState);
+    expect(lState).toEqual(lRotatedState);
+    expect(oState).toEqual(oRotatedState);
+    expect(sState).toEqual(sRotatedState);
+    expect(tState).toEqual(tRotatedState);
+    expect(zState).toEqual(zRotatedState);
+  });
 });
 
 export {};
