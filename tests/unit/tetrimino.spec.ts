@@ -1,5 +1,5 @@
 import {
-  Tetrimino,
+  ITetrimino,
   IMino,
   JMino,
   LMino,
@@ -11,13 +11,13 @@ import {
 
 describe("Tetrimino", () => {
   it("Can get now state", () => {
-    const iMino: Tetrimino = new IMino();
-    const jMino: Tetrimino = new JMino();
-    const lMino: Tetrimino = new LMino();
-    const oMino: Tetrimino = new OMino();
-    const sMino: Tetrimino = new SMino();
-    const tMino: Tetrimino = new TMino();
-    const zMino: Tetrimino = new ZMino();
+    const iMino: ITetrimino = new IMino();
+    const jMino: ITetrimino = new JMino();
+    const lMino: ITetrimino = new LMino();
+    const oMino: ITetrimino = new OMino();
+    const sMino: ITetrimino = new SMino();
+    const tMino: ITetrimino = new TMino();
+    const zMino: ITetrimino = new ZMino();
 
     const iState = iMino.getState();
     const jState = jMino.getState();
@@ -91,13 +91,13 @@ describe("Tetrimino", () => {
     ]);
   });
   it("Can get rotated state", () => {
-    const iMino: Tetrimino = new IMino();
-    const jMino: Tetrimino = new JMino();
-    const lMino: Tetrimino = new LMino();
-    const oMino: Tetrimino = new OMino();
-    const sMino: Tetrimino = new SMino();
-    const tMino: Tetrimino = new TMino();
-    const zMino: Tetrimino = new ZMino();
+    const iMino: ITetrimino = new IMino();
+    const jMino: ITetrimino = new JMino();
+    const lMino: ITetrimino = new LMino();
+    const oMino: ITetrimino = new OMino();
+    const sMino: ITetrimino = new SMino();
+    const tMino: ITetrimino = new TMino();
+    const zMino: ITetrimino = new ZMino();
 
     const iState = iMino.getState("right");
     const jState = jMino.getState("left");
@@ -171,13 +171,13 @@ describe("Tetrimino", () => {
     ]);
   });
   it("Can rotate state", () => {
-    const iMino: Tetrimino = new IMino();
-    const jMino: Tetrimino = new JMino();
-    const lMino: Tetrimino = new LMino();
-    const oMino: Tetrimino = new OMino();
-    const sMino: Tetrimino = new SMino();
-    const tMino: Tetrimino = new TMino();
-    const zMino: Tetrimino = new ZMino();
+    const iMino: ITetrimino = new IMino();
+    const jMino: ITetrimino = new JMino();
+    const lMino: ITetrimino = new LMino();
+    const oMino: ITetrimino = new OMino();
+    const sMino: ITetrimino = new SMino();
+    const tMino: ITetrimino = new TMino();
+    const zMino: ITetrimino = new ZMino();
 
     const iState = iMino.getState("right");
     const jState = jMino.getState("left");

@@ -5,7 +5,11 @@ export type RotateDirection = "right" | "left";
 export type TetriminoState = boolean[][];
 export type TetriminoStateMap = ReadonlyMap<RotateDegree, TetriminoState>;
 
-export abstract class Tetrimino {
+export interface ITetrimino {
+  getState(direction?: RotateDirection): TetriminoState;
+  rotate(direction: RotateDirection): TetriminoState;
+}
+export abstract class Tetrimino implements ITetrimino {
   protected abstract readonly stateMap: TetriminoStateMap;
 
   private rotateDegree: RotateDegree;
