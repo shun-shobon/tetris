@@ -1,4 +1,5 @@
-import { isUndefined, Point } from "../..";
+import { Point } from "../point";
+import { isUndefined } from "../../utils";
 
 export type RotateDegree = 0 | 90 | 180 | 270;
 export type RotateDirection = "right" | "left";
