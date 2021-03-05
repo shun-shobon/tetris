@@ -2,7 +2,7 @@ import { isUndefined, Point } from "../..";
 
 export type RotateDegree = 0 | 90 | 180 | 270;
 export type RotateDirection = "right" | "left";
-export type TetriminoState = Point[];
+export type TetriminoState = [Point, Point, Point, Point];
 export type TetriminoStateMap = ReadonlyMap<RotateDegree, TetriminoState>;
 
 export interface ITetrimino {
