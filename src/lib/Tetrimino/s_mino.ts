@@ -1,39 +1,12 @@
 import { Tetrimino } from ".";
+import Point from "../point";
 import type { RotateDegree, TetriminoState, TetriminoStateMap } from ".";
 
 const stateMap: TetriminoStateMap = new Map<RotateDegree, TetriminoState>([
-  [
-    0,
-    [
-      [false, true, true],
-      [true, true, false],
-      [false, false, false],
-    ],
-  ],
-  [
-    90,
-    [
-      [false, true, false],
-      [false, true, true],
-      [false, false, true],
-    ],
-  ],
-  [
-    180,
-    [
-      [false, false, false],
-      [false, true, true],
-      [true, true, false],
-    ],
-  ],
-  [
-    270,
-    [
-      [true, false, false],
-      [true, true, false],
-      [false, true, false],
-    ],
-  ],
+  [0, [new Point(0, 1), new Point(0, 2), new Point(1, 0), new Point(1, 1)]],
+  [90, [new Point(0, 1), new Point(1, 1), new Point(1, 2), new Point(2, 2)]],
+  [180, [new Point(1, 1), new Point(1, 2), new Point(2, 0), new Point(2, 1)]],
+  [270, [new Point(0, 0), new Point(1, 0), new Point(1, 1), new Point(2, 1)]],
 ]);
 
 export class SMino extends Tetrimino {
