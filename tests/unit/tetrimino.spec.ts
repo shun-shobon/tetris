@@ -7,7 +7,7 @@ import {
   SMino,
   TMino,
   ZMino,
-} from "../../src/lib/tetrimino";
+} from "../../src";
 
 describe("Tetrimino", () => {
   it("Can get now state", () => {

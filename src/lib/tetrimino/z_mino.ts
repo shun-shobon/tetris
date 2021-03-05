@@ -1,5 +1,5 @@
 import { Tetrimino } from ".";
-import Point from "../point";
+import { Point } from "../..";
 import type { RotateDegree, TetriminoState, TetriminoStateMap } from ".";
 
 const stateMap: TetriminoStateMap = new Map<RotateDegree, TetriminoState>([
