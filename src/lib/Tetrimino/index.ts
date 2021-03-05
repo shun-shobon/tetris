@@ -1,8 +1,9 @@
 import { isUndefined } from "../../utils/validator";
+import Point from "../point";
 
 export type RotateDegree = 0 | 90 | 180 | 270;
 export type RotateDirection = "right" | "left";
-export type TetriminoState = boolean[][];
+export type TetriminoState = Point[];
 export type TetriminoStateMap = ReadonlyMap<RotateDegree, TetriminoState>;
 
 export interface ITetrimino {
