@@ -4,6 +4,7 @@
     "target": "esnext",
     "module": "esnext",
     "jsx": "react-jsx",
+    "noUncheckedIndexedAccess": false,
     "types": ["@types/jest"],
   },
 }

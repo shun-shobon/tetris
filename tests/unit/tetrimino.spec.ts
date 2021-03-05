@@ -1,5 +1,4 @@
 import {
-  ITetrimino,
   IMino,
   JMino,
   LMino,
@@ -7,7 +6,23 @@ import {
   SMino,
   TMino,
   ZMino,
-} from "../../src";
+} from "../../src/lib/tetrimino";
+import type { ITetrimino, TetriminoState } from "../../src/lib/tetrimino";
+
+const pointsToMatrix = (points: TetriminoState): (0 | 1)[][] => {
+  const matrix: (0 | 1)[][] = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ];
+
+  points.forEach(({ row, col }) => {
+    matrix[row][col] = 1;
+  });
+
+  return matrix;
+};
 
 describe("Tetrimino", () => {
   it("Can get now state", () => {
@@ -31,63 +46,77 @@ describe("Tetrimino", () => {
     // ████████
     // ░░░░░░░░
     // ░░░░░░░░
-    expect(iState).toEqual([
-      [false, false, false, false],
-      [true, true, true, true],
-      [false, false, false, false],
-      [false, false, false, false],
+    expect(pointsToMatrix(iState)).toEqual([
+      [0, 0, 0, 0],
+      [1, 1, 1, 1],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
     ]);
 
-    // ██░░░░
-    // ██████
-    // ░░░░░░
-    expect(jState).toEqual([
-      [true, false, false],
-      [true, true, true],
-      [false, false, false],
+    // ██░░░░░░
+    // ██████░░
+    // ░░░░░░░░
+    // ░░░░░░░░
+    expect(pointsToMatrix(jState)).toEqual([
+      [1, 0, 0, 0],
+      [1, 1, 1, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
     ]);
 
-    // ░░░░██
-    // ██████
-    // ░░░░░░
-    expect(lState).toEqual([
-      [false, false, true],
-      [true, true, true],
-      [false, false, false],
+    // ░░░░██░░
+    // ██████░░
+    // ░░░░░░░░
+    // ░░░░░░░░
+    expect(pointsToMatrix(lState)).toEqual([
+      [0, 0, 1, 0],
+      [1, 1, 1, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
     ]);
 
-    // ████
-    // ████
-    expect(oState).toEqual([
-      [true, true],
-      [true, true],
+    // ░░░░░░░░
+    // ░░████░░
+    // ░░████░░
+    // ░░░░░░░░
+    expect(pointsToMatrix(oState)).toEqual([
+      [0, 0, 0, 0],
+      [0, 1, 1, 0],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
     ]);
 
-    // ░░████
-    // ████░░
-    // ░░░░░░
-    expect(sState).toEqual([
-      [false, true, true],
-      [true, true, false],
-      [false, false, false],
+    // ░░████░░
+    // ████░░░░
+    // ░░░░░░░░
+    // ░░░░░░░░
+    expect(pointsToMatrix(sState)).toEqual([
+      [0, 1, 1, 0],
+      [1, 1, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
     ]);
 
-    // ░░██░░
-    // ██████
-    // ░░░░░░
-    expect(tState).toEqual([
-      [false, true, false],
-      [true, true, true],
-      [false, false, false],
+    // ░░██░░░░
+    // ██████░░
+    // ░░░░░░░░
+    // ░░░░░░░░
+    expect(pointsToMatrix(tState)).toEqual([
+      [0, 1, 0, 0],
+      [1, 1, 1, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
     ]);
 
-    // ████░░
-    // ░░████
-    // ░░░░░░
-    expect(zState).toEqual([
-      [true, true, false],
-      [false, true, true],
-      [false, false, false],
+    // ████░░░░
+    // ░░████░░
+    // ░░░░░░░░
+    // ░░░░░░░░
+    expect(pointsToMatrix(zState)).toEqual([
+      [1, 1, 0, 0],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
     ]);
   });
   it("Can get rotated state", () => {
@@ -111,63 +140,77 @@ describe("Tetrimino", () => {
     // ░░░░██░░
     // ░░░░██░░
     // ░░░░██░░
-    expect(iState).toEqual([
-      [false, false, true, false],
-      [false, false, true, false],
-      [false, false, true, false],
-      [false, false, true, false],
+    expect(pointsToMatrix(iState)).toEqual([
+      [0, 0, 1, 0],
+      [0, 0, 1, 0],
+      [0, 0, 1, 0],
+      [0, 0, 1, 0],
     ]);
 
-    // ░░██░░
-    // ░░██░░
-    // ████░░
-    expect(jState).toEqual([
-      [false, true, false],
-      [false, true, false],
-      [true, true, false],
+    // ░░██░░░░
+    // ░░██░░░░
+    // ████░░░░
+    // ░░░░░░░░
+    expect(pointsToMatrix(jState)).toEqual([
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+      [1, 1, 0, 0],
+      [0, 0, 0, 0],
     ]);
 
-    // ░░██░░
-    // ░░██░░
-    // ░░████
-    expect(lState).toEqual([
-      [false, true, false],
-      [false, true, false],
-      [false, true, true],
+    // ░░██░░░░
+    // ░░██░░░░
+    // ░░████░░
+    // ░░░░░░░░
+    expect(pointsToMatrix(lState)).toEqual([
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
     ]);
 
-    // ████
-    // ████
-    expect(oState).toEqual([
-      [true, true],
-      [true, true],
+    // ░░░░░░░░
+    // ░░████░░
+    // ░░████░░
+    // ░░░░░░░░
+    expect(pointsToMatrix(oState)).toEqual([
+      [0, 0, 0, 0],
+      [0, 1, 1, 0],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
     ]);
 
-    // ░░██░░
-    // ░░████
-    // ░░░░██
-    expect(sState).toEqual([
-      [false, true, false],
-      [false, true, true],
-      [false, false, true],
+    // ░░██░░░░
+    // ░░████░░
+    // ░░░░██░░
+    // ░░░░░░░░
+    expect(pointsToMatrix(sState)).toEqual([
+      [0, 1, 0, 0],
+      [0, 1, 1, 0],
+      [0, 0, 1, 0],
+      [0, 0, 0, 0],
     ]);
 
-    // ░░██░░
-    // ████░░
-    // ░░██░░
-    expect(tState).toEqual([
-      [false, true, false],
-      [true, true, false],
-      [false, true, false],
+    // ░░██░░░░
+    // ████░░░░
+    // ░░██░░░░
+    // ░░░░░░░░
+    expect(pointsToMatrix(tState)).toEqual([
+      [0, 1, 0, 0],
+      [1, 1, 0, 0],
+      [0, 1, 0, 0],
+      [0, 0, 0, 0],
     ]);
 
-    // ░░░░██
-    // ░░████
-    // ░░██░░
-    expect(zState).toEqual([
-      [false, false, true],
-      [false, true, true],
-      [false, true, false],
+    // ░░░░██░░
+    // ░░████░░
+    // ░░██░░░░
+    // ░░░░░░░░
+    expect(pointsToMatrix(zState)).toEqual([
+      [0, 0, 1, 0],
+      [0, 1, 1, 0],
+      [0, 1, 0, 0],
+      [0, 0, 0, 0],
     ]);
   });
   it("Can rotate state", () => {
